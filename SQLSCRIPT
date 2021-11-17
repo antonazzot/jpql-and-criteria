@@ -1,0 +1,64 @@
+create table "pla_yer" (
+id serial not null primary key,
+name varchar (20),
+login varchar (20)
+);
+
+create table "attainment" (
+id serial not null primary key,
+attainment_name varchar (20)
+);
+
+create table "playerid_attainmentid" (
+player_id int  not null,
+attainment_id int not null
+) 
+
+
+ALTER table "playerid_attainmentid" 
+ADD CONSTRAINT player_id_player_id_fkey 
+FOREIGN KEY (player_id) 
+REFERENCES "pla_yer"(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE "playerid_attainmentid"  
+ADD CONSTRAINT attainment_id_attainment_id_fkey 
+FOREIGN KEY (attainment_id) 
+references "attainment" (id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+select * from "Player" p ;
+
+insert into "attainment" (attainment_name) values
+('killer');
+insert into "attainment" (attainment_name) values
+('thunderer');
+insert into "attainment" (attainment_name) values
+('lord');
+ 
+insert into "pla_yer" (name, login) values
+('anton', 'myhin');
+insert into "pla_yer" (name, login) values
+('stepan', 'step') ;
+insert into "pla_yer" (name, login) values
+('sergey', 'lis') ;
+
+insert into "playerid_attainmentid" (player_id, attainment_id) values
+(1, 1);
+insert into "playerid_attainmentid" (player_id, attainment_id) values
+(1, 2);
+insert into "playerid_attainmentid" (player_id, attainment_id) values
+(1, 3);
+insert into "playerid_attainmentid" (player_id, attainment_id) values
+(2, 2);
+insert into "playerid_attainmentid" (player_id, attainment_id) values
+(3, 1);
+insert into "playerid_attainmentid" (player_id, attainment_id) values
+(3, 3);
+
+delete from "Player" ;
+drop table "Player";
+drop table "Attainment" ;
+drop table "Playerid_Attainmentid" ;
+
+select * from "pla_yer" p ;
+select * from "attainment" a ;
+select * from "playerid_attainmentid" pa;
