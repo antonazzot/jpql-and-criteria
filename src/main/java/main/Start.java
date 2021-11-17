@@ -13,6 +13,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import java.util.List;
 
 
 public class Start {
@@ -147,8 +148,8 @@ public class Start {
 //        predicates [0] = criteriaBuilder.like(root.get("login"), "lis");
 //        predicates [1] = criteriaBuilder.gt(root.get("id"), 1);
 //        query.select(root).where(predicates);
-//
 //        entityManager.createQuery(query).getResultList().forEach(Start::printWithPrefix);
+
 
 
         entityManager.close();
