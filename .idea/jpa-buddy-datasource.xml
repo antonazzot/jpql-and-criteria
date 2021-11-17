@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="984d571f-3105-4015-ba8a-9d654fe567f4" name="jpqltask" url="jdbc:postgresql://localhost/jpqltask" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>
