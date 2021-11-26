@@ -25,12 +25,12 @@ public class Attainment {
     private int id;
     @Column (name = "attainment_name")
     private String attainmentName;
-    @ManyToMany
-    @JoinTable (
-            name = "playerid_attainmentid",
-            joinColumns = @JoinColumn (name = "attainment_id"),
-            inverseJoinColumns = @JoinColumn (name = "player_id")
-    )
-    private Set<Player> playerSet;
+//    @ManyToMany
+//    @JoinTable (
+//            name = "playerid_attainmentid",
+//            joinColumns = @JoinColumn (name = "attainment_id"),
+//            inverseJoinColumns = @JoinColumn (name = "player_id")
+//    )
+//    private Set<Player> playerSet;
 
 }
