@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+        default-autowire="byType"
+>
+
+    <context:property-placeholder location="player.properties, game.properties" />
+
+    <bean id="anton" class="model.Player" primary="true">
+        <constructor-arg index="0" value= "1"/>
+        <constructor-arg name="name" value="anton"/>
+        <constructor-arg name="login" value="myhin"/>
+        <constructor-arg name="attainments">
+            <set>
+                <ref bean="killer"/>
+                <ref bean="lord"/>
+            </set>
+        </constructor-arg>
+
+    </bean>
+
+    <bean name="killer" class="model.Attainment">
+        <property name="id" value="1"/>
+        <property name="attainmentName" value="killer"/>
+<!--        <property name="attainments" >-->
+<!--            <list>-->
+<!--                <ref bean="anton"/>-->
+<!--            </list>-->
+<!--        </property>-->
+    </bean>
+
+    <util:set id="attaitmentLis">
+        <ref bean="killer"/>
+        <ref bean="lord"/>
+        <ref bean="thunderer"/>
+    </util:set>
+
+    <bean name="thunderer" class="model.Attainment" c:id="4" c:attainmentName="thunderer"/>
+
+
+    <bean name="lord" class="model.Attainment" c:id="2" c:attainmentName="lord">
+    </bean>
+
+    <bean name="lis" class="model.Player" p:id="${lis.id}" p:name="${lis.name}" p:login="lis">
+        <property name="attainments" ref="attaitmentLis"/>
+    </bean>
+
+    <bean id="stalkerGame" class="model.Game"  autowire="byName" c:id="${stalker.id}" c:name="${stalker.name}" >
+        <constructor-arg name="players" ref="stalkerPlayers"/>
+    </bean>
+
+    <util:map id="stalkerPlayers">
+        <entry key-ref="lis" value-ref="attaitmentLis"/>
+    </util:map>
+</beans>
